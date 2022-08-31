@@ -4,8 +4,8 @@ My master degree final project.
 
 ## Description
 
-Machine_Learning: Raw data retrieving, data preprocessing and modeling
-T-shirt_Generator: Web application implementation
+* Machine_Learning: Raw data retrieving, data preprocessing and modeling
+* T-shirt_Generator: Web application implementation
 
 ## T-shirt_Generator User Guide
 
