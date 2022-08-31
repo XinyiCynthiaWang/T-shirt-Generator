@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>T-shirt Generator</h1>
+</header>
+{% if generated == True %}
+<div class="selection">
+    <h2>Tada!</h2>
+    <div class="image">
+        <img src="{{ url_for('static', filename='images/bg.png') }}" style="width:90%">
+    </div>
+    <img src="{{ url_for('static', filename='images/' + file_name) }}" id="result-picture">
+    <!-- <button name="customize" value="black" type="submit" class="btn btn-outline-primary">BLACK IS COOL</button>
+    <button name="customize" value="white" type="submit" class="btn btn-outline-primary">WHITE IS SIMPLE</button>
+    <button name="customize" value="colourful" type="submit" class="btn btn-outline-primary">COLOURFUL PLEASE</button> -->
+
+</div>
+
+{% else %}
+<form action="/" method="POST">
+    {% if step == 1 %}
+        <div class="selection">
+            <h2>Tell me which kind of T-shirt do you prefer!</h2>
+            <div class="image">
+                <img src="{{ url_for('static', filename='images/1.png') }}" style="width:90%">
+            </div>
+            <button name="customize" value="realistic" type="submit" class="btn btn-primary button-left" type="submit">Realistic</button>
+            <button name="customize" value="nonrealistic" type="submit" class="btn btn-primary button-right" type="submit">Non-realistic</button>
+            <!-- <button name="customize" value="black" type="submit" class="btn btn-outline-primary">BLACK IS COOL</button>
+            <button name="customize" value="white" type="submit" class="btn btn-outline-primary">WHITE IS SIMPLE</button>
+            <button name="customize" value="colourful" type="submit" class="btn btn-outline-primary">COLOURFUL PLEASE</button> -->
+        
+        </div>
+
+    {% elif step == 2 %}
+        <div class="selection">
+            <h2>Tell me which kind of T-shirt do you prefer!</h2>
+            <div class="image">
+                <img src="{{ url_for('static', filename='images/2.png') }}" style="width:90%">
+            </div>
+            {% if slogan == False %}
+                <button name="customize" value="slogan" type="submit" class="btn btn-primary button-left" type="submit">Tagline</button>
+                <button name="customize" value="noslogan" type="submit" class="btn btn-primary button-right" type="submit">No Tagline</button>
+            {% else%}
+            <div class="input-group mb-3" id="input-group">
+                <input type="text" class="form-control" placeholder="Your favourable tagline topic. If no, keep empty." aria-label="Your Slogan" aria-describedby="button-addon2" id="slogan-input" name="slogan">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+            </div>
+            {% endif %}
+            <!-- <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button name="customize" value="animal" type="submit" class="btn btn-outline-primary">CUTE ANIMALS</button>
+                <button name="customize" value="person" type="submit" class="btn btn-outline-primary">PHOTOGRAPHY PLEASE</button>
+                <button name="customize" value="neither" type="submit" class="btn btn-outline-primary">NEITHER EXITS ME</button>
+            </div> -->
+        </div>
+
+    {% else %}
+        <div class="selection">
+            <h2>Tell me which kind of T-shirt do you prefer!</h2>
+            <div class="image">
+                <img src="{{ url_for('static', filename='images/3.png') }}" style="width:90%">
+            </div>
+            <button name="customize" value="blacknwhite" type="submit" class="btn btn-primary button-left" type="submit">Black&White</button>
+            <button name="customize" value="colourful" type="submit" class="btn btn-primary button-right" type="submit">Colourful</button>
+            <!-- <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button name="customize" value="word" type="submit" class="btn btn-outline-primary">SLOGANS SPEAKS FOR ME</button>
+                <button name="customize" value="noword" type="submit" class="btn btn-outline-primary">PREFER NO WORDS</button>
+            </div> -->
+        </div>
+
+    {% endif %}
+
+</form>
+
+{% endif %}
+
+{% endblock %}
+
